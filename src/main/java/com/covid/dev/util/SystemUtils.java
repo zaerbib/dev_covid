@@ -8,31 +8,31 @@ public class SystemUtils {
 	@Value("${entrepo.entry}")
 	private String entrepo;
 	
-	@Value("${entrepo.entry.data1}")
+	@Value("${entrepo.data1}")
 	private String entrepo1;
 	
-	@Value("${entrepo.entry.data2}")
+	@Value("${entrepo.data2}")
 	private String entrepo2;
 	
-	@Value("${entrepo.entry.data3}")
+	@Value("${entrepo.data3}")
 	private String entrepo3;
 	
-	@Value("${entrepo.entry.data4}")
+	@Value("${entrepo.data4}")
 	private String entrepo4;
 	
-	@Value("${entrepo.entry.data5}")
+	@Value("${entrepo.data5}")
 	private String entrepo5;
 	
-	@Value("${entrepo.entry.data6}")
+	@Value("${entrepo.data6}")
 	private String entrepo6;
 	
-	@Value("${entrepo.entry.data7}")
+	@Value("${entrepo.data7}")
 	private String entrepo7;
 	
-	@Value("${entrepo.entry.data8}")
+	@Value("${entrepo.data8}")
 	private String entrepo8;
 	
-	@Value("${entrepo.entry.data9}")
+	@Value("${entrepo.data9}")
 	private String entrepo9;
 	
 	public String getEntrepo() {
