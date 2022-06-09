@@ -11,6 +11,7 @@ import com.covid.dev.data.CovidHospitClage10;
 public class CovidHospitClage10Writer implements ItemWriter<CovidHospitClage10> {
 	@Autowired
 	private CovidHospitClage10Dao covidHospitClage10Dao;
+	
 	@Override
 	public void write(List<? extends CovidHospitClage10> items) throws Exception {
 		covidHospitClage10Dao.saveAllAndFlush(items);

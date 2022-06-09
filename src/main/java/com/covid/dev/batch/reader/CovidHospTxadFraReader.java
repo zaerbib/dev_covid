@@ -6,12 +6,10 @@ import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.stereotype.Component;
 
 import com.covid.dev.dto.CovidHospTxadFraDto;
 import com.covid.dev.util.SystemUtils;
 
-@Component
 public class CovidHospTxadFraReader {
 
 	@Autowired

@@ -4,12 +4,10 @@ import java.util.List;
 
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import com.covid.dev.dao.CovidHospAdAgeDao;
 import com.covid.dev.data.CovidHospAdAge;
 
-@Repository
 public class CovidHospAdAgeWriter implements ItemWriter<CovidHospAdAge> {
 	@Autowired
 	private CovidHospAdAgeDao covidHospAdAgeDao;
