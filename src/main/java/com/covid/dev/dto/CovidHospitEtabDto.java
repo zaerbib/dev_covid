@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class CovidHospEtabDto {
+public class CovidHospitEtabDto {
 	private Date jour; 
 	private Integer nb;
 }
