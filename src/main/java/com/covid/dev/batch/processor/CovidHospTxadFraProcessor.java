@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import com.covid.dev.data.CovidHospTxadFra;
 import com.covid.dev.dto.CovidHospTxadFraDto;
 
+@Component
 public class CovidHospTxadFraProcessor implements ItemProcessor<CovidHospTxadFraDto, CovidHospTxadFra>{
 
 	@Override
