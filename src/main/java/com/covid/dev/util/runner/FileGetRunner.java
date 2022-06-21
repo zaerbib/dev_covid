@@ -30,15 +30,15 @@ public class FileGetRunner {
 	public void getFilesRunner() {
 		
 		logger.info("---- début téléchargement ----");
-		runner.downloadFromSource(HttpCovidURL.COVID_HOSP_TXAD_REG, systemUtils.getEntrepo1());
+		runner.downloadFromSource(HttpCovidURL.COVID_HOSP_TXAD_AGE_FRA, systemUtils.getEntrepo1());
 		runner.downloadFromSource(HttpCovidURL.COVID_HOSP_TXAD_REG, systemUtils.getEntrepo2());
-		runner.downloadFromSource(HttpCovidURL.COVID_HOSP_TXAD_REG, systemUtils.getEntrepo3());
-		runner.downloadFromSource(HttpCovidURL.COVID_HOSP_TXAD_REG, systemUtils.getEntrepo4());
-		runner.downloadFromSource(HttpCovidURL.COVID_HOSP_TXAD_REG, systemUtils.getEntrepo5());
-		runner.downloadFromSource(HttpCovidURL.COVID_HOSP_TXAD_REG, systemUtils.getEntrepo6());
-		runner.downloadFromSource(HttpCovidURL.COVID_HOSP_TXAD_REG, systemUtils.getEntrepo7());
-		runner.downloadFromSource(HttpCovidURL.COVID_HOSP_TXAD_REG, systemUtils.getEntrepo8());
-		runner.downloadFromSource(HttpCovidURL.COVID_HOSP_TXAD_REG, systemUtils.getEntrepo9());
+		runner.downloadFromSource(HttpCovidURL.COVID_HOSP_TXAD_FRA, systemUtils.getEntrepo3());
+		runner.downloadFromSource(HttpCovidURL.COVID_HOSP_AD_AGE, systemUtils.getEntrepo4());
+		runner.downloadFromSource(HttpCovidURL.COVID_HOSPIT_INCID_REG, systemUtils.getEntrepo5());
+		runner.downloadFromSource(HttpCovidURL.COVID_HOSPIT, systemUtils.getEntrepo6());
+		runner.downloadFromSource(HttpCovidURL.COVID_HOSPIT_INCID, systemUtils.getEntrepo7());
+		runner.downloadFromSource(HttpCovidURL.COVID_HOSPIT_CLAGE10, systemUtils.getEntrepo8());
+		runner.downloadFromSource(HttpCovidURL.COVID_HOSPIT_ETAB, systemUtils.getEntrepo9());
 		logger.info("---- fin téléchargement ----");
 		
 		logger.info("---- publication d'un event ----");

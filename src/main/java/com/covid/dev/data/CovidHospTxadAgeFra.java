@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "covid_hosp_txa_age_fra")
+@Table(name = "covid_hosp_txad_age_fra")
 @Data
 public class CovidHospTxadAgeFra {
 	

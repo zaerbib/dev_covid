@@ -9,5 +9,5 @@ public class CovidHospitIncidRegDto {
 	private Date jour;
 	private String nomReg;
 	private Integer numReg;
-	private String incidRea;
+	private Integer incidRea;
 }

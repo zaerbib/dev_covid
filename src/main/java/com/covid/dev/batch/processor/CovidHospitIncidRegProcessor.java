@@ -8,7 +8,7 @@ import com.covid.dev.data.CovidHospitIncidReg;
 import com.covid.dev.dto.CovidHospitIncidRegDto;
 
 @Component
-public class CovidHospIncidRegProcessor implements ItemProcessor<CovidHospitIncidRegDto, CovidHospitIncidReg> {
+public class CovidHospitIncidRegProcessor implements ItemProcessor<CovidHospitIncidRegDto, CovidHospitIncidReg> {
 
 	@Override
 	public CovidHospitIncidReg process(CovidHospitIncidRegDto item) throws Exception {

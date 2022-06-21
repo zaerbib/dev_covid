@@ -22,10 +22,12 @@ public class BatchRunner {
 	
 	@Autowired
 	@Qualifier("job1")
-	private Job job;
+	private Job job1;
 	
 	@EventListener(AfterReadyEvent.class)
-	public void lauchBatch() throws JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException, JobParametersInvalidException {
-		jobLauncher.run(job, new JobParameters());
+	public void lauchBatch() throws JobExecutionAlreadyRunningException, 
+									JobRestartException, JobInstanceAlreadyCompleteException, 
+									JobParametersInvalidException {
+		jobLauncher.run(job1, new JobParameters());
 	}
 }

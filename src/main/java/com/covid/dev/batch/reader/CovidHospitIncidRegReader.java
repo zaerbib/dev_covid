@@ -1,13 +1,13 @@
 package com.covid.dev.batch.reader;
 
 import org.springframework.batch.item.file.FlatFileItemReader;
-import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Component;
 
+import com.covid.dev.batch.mapper.CovidHospitIncidRegMapper;
 import com.covid.dev.dto.CovidHospitIncidRegDto;
 import com.covid.dev.util.SystemUtils;
 
@@ -17,6 +17,9 @@ public class CovidHospitIncidRegReader {
 
 	@Autowired
 	private SystemUtils systemUtils;
+	
+	@Autowired
+	private CovidHospitIncidRegMapper covidHospitIncidRegMapper;
 	
 	/**
 	 * read line from file 
@@ -33,20 +36,15 @@ public class CovidHospitIncidRegReader {
 	
 	private DelimitedLineTokenizer delimit1() {
 		DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
+		tokenizer.setDelimiter(";");
 		tokenizer.setNames(new String[] {"jour", "nomReg", "numReg", "incid_rea"});
 		return tokenizer;
-	}
-	
-	private BeanWrapperFieldSetMapper<CovidHospitIncidRegDto> fieldMapper1(){
-		BeanWrapperFieldSetMapper<CovidHospitIncidRegDto> beanMapper = new BeanWrapperFieldSetMapper<>();
-		beanMapper.setTargetType(CovidHospitIncidRegDto.class);
-		return beanMapper;
 	}
 	
 	private DefaultLineMapper<CovidHospitIncidRegDto> lineMapper(){
 		DefaultLineMapper<CovidHospitIncidRegDto> mapper = new DefaultLineMapper<>();
 		mapper.setLineTokenizer(delimit1());
-		mapper.setFieldSetMapper(fieldMapper1());
+		mapper.setFieldSetMapper(covidHospitIncidRegMapper);
 		return mapper;
 	}
 }
