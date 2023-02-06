@@ -1,5 +1,6 @@
 package com.covid.dev.data;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -33,5 +34,11 @@ public class CovidHospTxadReg {
 	@Column(name = "tx_prev_hosp")
 	private Double txPrevHosp;
 	@Column(name = "tx_prev_SC")
-	private Double txPrevSc;	
+	private Double txPrevSc;
+	@Column(insertable = true)
+	private LocalDateTime updateTime;
+
+	public void onCreate(){
+		this.setUpdateTime(LocalDateTime.now());
+	}
 }

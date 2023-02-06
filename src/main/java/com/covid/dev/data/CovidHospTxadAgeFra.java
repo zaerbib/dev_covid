@@ -1,13 +1,9 @@
 package com.covid.dev.data;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.Data;
 
@@ -36,5 +32,11 @@ public class CovidHospTxadAgeFra {
 	private Double txPrevHosp;
 	@Column(name = "tx_prev_SC")
 	private Double txPrevSc;
-	
+	@Column(insertable = true, name = "updateTimme")
+	private LocalDateTime updateTime;
+
+	@PrePersist
+	public void onCreate(){
+		this.setUpdateTime(LocalDateTime.now());
+	}
 }

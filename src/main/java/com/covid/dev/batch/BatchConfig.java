@@ -107,7 +107,6 @@ public class BatchConfig {
 				.reader(covidHospTxadAgeFraReader.reader())
 				.processor(covidHospTxadAgeFraProcessor)
 				.writer(covidHospTxadAgeFraWriter)
-				.allowStartIfComplete(true)
 				.build();
 	}	
 	
@@ -118,7 +117,6 @@ public class BatchConfig {
 				.reader(covidHospTxadRegReader.reader())
 				.processor(covidHospTxadRegProcessor)
 				.writer(covidHospTxadRegWriter)
-				.allowStartIfComplete(true)
 				.build();
 	}
 	
@@ -129,7 +127,6 @@ public class BatchConfig {
 				.reader(covidHospTxadFraReader.reader())
 				.processor(covidHospTxadFraProcessor)
 				.writer(covidHospTxadFraWriter)
-				.allowStartIfComplete(true)
 				.build();
 	}
 	
@@ -140,7 +137,6 @@ public class BatchConfig {
 				.reader(covidHospAdAgeReader.reader())
 				.processor(covidHospAdAgeProcessor)
 				.writer(covidHospAdAgeWriter)
-				.allowStartIfComplete(true)
 				.build();
 	}
 	
@@ -151,7 +147,6 @@ public class BatchConfig {
 				.reader(covidHospitIncidRegReader.reader())
 				.processor(covidHospitIncidRegProcessor)
 				.writer(covidHospitIncidRegWriter)
-				.allowStartIfComplete(true)
 				.build();
 	}
 }
