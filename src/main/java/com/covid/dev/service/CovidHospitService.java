@@ -1,6 +1,6 @@
 package com.covid.dev.service;
 
-import com.covid.dev.repository.CovidHospitDao;
+import com.covid.dev.repository.CovidHospitRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class CovidHospitService {
 
-    private final CovidHospitDao covidHospitDao;
+    private final CovidHospitRepository covidHospitRepository;
 
-    public CovidHospitService(CovidHospitDao covidHospitDao) {
-        this.covidHospitDao = covidHospitDao;
+    public CovidHospitService(CovidHospitRepository covidHospitRepository) {
+        this.covidHospitRepository = covidHospitRepository;
     }
 }

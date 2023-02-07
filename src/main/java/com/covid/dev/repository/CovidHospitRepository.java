@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.covid.dev.data.CovidHospit;
 
 @Repository
-public interface CovidHospitDao extends JpaRepository<CovidHospit, Long> {
+public interface CovidHospitRepository extends JpaRepository<CovidHospit, Long> {
     @Query(value = "select * from covid_hospit che where date_part('Year', che.jour) :=annee", nativeQuery = true)
     public CovidHospit findCovidHospitByAnne(String annee);
 

@@ -6,17 +6,17 @@ import org.springframework.batch.item.ItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.covid.dev.repository.CovidHospAdAgeDao;
+import com.covid.dev.repository.CovidHospAdAgeRepository;
 import com.covid.dev.data.CovidHospAdAge;
 
 @Component
 public class CovidHospAdAgeWriter implements ItemWriter<CovidHospAdAge> {
 	@Autowired
-	private CovidHospAdAgeDao covidHospAdAgeDao;
+	private CovidHospAdAgeRepository covidHospAdAgeRepository;
 
 	@Override
 	public void write(List<? extends CovidHospAdAge> items) throws Exception {
-		covidHospAdAgeDao.saveAllAndFlush(items);
+		covidHospAdAgeRepository.saveAllAndFlush(items);
 	}
 
 }
