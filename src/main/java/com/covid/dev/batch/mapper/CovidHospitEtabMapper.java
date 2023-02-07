@@ -18,7 +18,7 @@ public class CovidHospitEtabMapper implements FieldSetMapper<CovidHospitEtabDto>
         CovidHospitEtabDto covidHospitEtabDto = new CovidHospitEtabDto();
         covidHospitEtabDto.setDep(parseStringToInteger(fieldSet.readString("dep")));
         try {
-            covidHospitEtabDto.setJour(new SimpleDateFormat("yyyy-mm-dd").parse(fieldSet.readString("jour")));
+            covidHospitEtabDto.setJour(new SimpleDateFormat("yyyy-MM-dd").parse(fieldSet.readString("jour")));
         } catch (ParseException e) {
             log.info("Parse failed !!!!");
         }
@@ -28,6 +28,7 @@ public class CovidHospitEtabMapper implements FieldSetMapper<CovidHospitEtabDto>
     }
 
     private Integer parseStringToInteger(String str) {
-        return str.equals("") || str.equals("NA") ? 0 : Integer.parseInt(str);
+        return str.equals("") || str.equals("NA")
+                || str.contains("A") || str.contains("B") ? 0 : Integer.parseInt(str);
     }
 }

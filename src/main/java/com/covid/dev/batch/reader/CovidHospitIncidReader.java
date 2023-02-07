@@ -1,5 +1,6 @@
 package com.covid.dev.batch.reader;
 
+import com.covid.dev.batch.mapper.CovidHospitIncidMapper;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
@@ -16,6 +17,9 @@ public class CovidHospitIncidReader {
 
 	@Autowired
 	private SystemUtils systemUtils;
+
+	@Autowired
+	private CovidHospitIncidMapper covidHospitIncidMapper;
 	
 	/**
 	 * read line from file 
@@ -24,7 +28,7 @@ public class CovidHospitIncidReader {
 	public FlatFileItemReader<CovidHospitIncidDto> reader() {
 		FlatFileItemReader<CovidHospitIncidDto> reader = new FlatFileItemReader<>();
 		
-		reader.setResource(new FileSystemResource(systemUtils.getEntrepo2()));
+		reader.setResource(new FileSystemResource(systemUtils.getEntrepo7()));
 		reader.setLinesToSkip(1);
 		reader.setLineMapper(lineMapper());
 		return reader;
@@ -32,7 +36,8 @@ public class CovidHospitIncidReader {
 	
 	private DelimitedLineTokenizer delimit1() {
 		DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
-		tokenizer.setNames(new String[] {"reg", "jour", "PourAvec", "tx_indic_7J_DC", "tx_indic_7J_hosp", "tx_indic_7J_SC", "tx_prev_hosp", "tx_prev_SC"});
+		tokenizer.setDelimiter(";");
+		tokenizer.setNames(new String[] {"dep", "jour", "incid_hosp", "incid_rea", "incid_dc", "incid_rad"});
 		return tokenizer;
 	}
 	
@@ -45,7 +50,7 @@ public class CovidHospitIncidReader {
 	private DefaultLineMapper<CovidHospitIncidDto> lineMapper(){
 		DefaultLineMapper<CovidHospitIncidDto> mapper = new DefaultLineMapper<>();
 		mapper.setLineTokenizer(delimit1());
-		mapper.setFieldSetMapper(fieldMapper1());
+		mapper.setFieldSetMapper(covidHospitIncidMapper);
 		return mapper;
 	}
 

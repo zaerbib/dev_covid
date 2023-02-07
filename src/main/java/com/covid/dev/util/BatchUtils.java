@@ -10,6 +10,7 @@ public class BatchUtils {
 	public static final String step7 = "step7";
 	public static final String step8 = "step8";
 	public static final String step9 = "step9";
+	public static final String step10 = "step10";
 	public static final String job1 = "job1";
 	public static final String job2 = "job2";
 	public static final String job3 = "job3";

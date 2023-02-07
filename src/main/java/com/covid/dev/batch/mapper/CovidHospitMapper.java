@@ -19,7 +19,7 @@ public class CovidHospitMapper implements FieldSetMapper<CovidHospitDto> {
         covidHospitDto.setDep(fieldSet.readString("dep"));
         covidHospitDto.setSex(fieldSet.readChar("sexe"));
         try {
-            covidHospitDto.setJour(new SimpleDateFormat("yyyy-mm-dd").parse(fieldSet.readString("jour")));
+            covidHospitDto.setJour(new SimpleDateFormat("yyyy-MM-dd").parse(fieldSet.readString("jour")));
         } catch (ParseException e) {
             log.info("Parse failed !!!");
         }

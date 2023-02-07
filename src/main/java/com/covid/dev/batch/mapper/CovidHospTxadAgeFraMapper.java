@@ -19,7 +19,7 @@ public class CovidHospTxadAgeFraMapper implements FieldSetMapper<CovidHospTxadAg
 		dataItem.setFra(fieldSet.readString("fra"));
 		
 		try {
-			dataItem.setJour(new SimpleDateFormat("yyyy-mm-dd").parse(fieldSet.readString("jour")));
+			dataItem.setJour(new SimpleDateFormat("yyyy-MM-dd").parse(fieldSet.readString("jour")));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

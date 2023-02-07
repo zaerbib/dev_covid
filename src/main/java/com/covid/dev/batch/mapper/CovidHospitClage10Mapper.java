@@ -21,7 +21,7 @@ public class CovidHospitClage10Mapper implements FieldSetMapper<CovidHospitClage
         covidHospitClage10Dto.setReg(parseStringToInteger(fieldSet.readString("reg")));
         covidHospitClage10Dto.setClage90(parseStringToInteger(fieldSet.readString("cl_age90")));
         try{
-            covidHospitClage10Dto.setJour(new SimpleDateFormat("yyyy-mm-dd").parse(fieldSet.readString("jour")));
+            covidHospitClage10Dto.setJour(new SimpleDateFormat("yyyy-MM-dd").parse(fieldSet.readString("jour")));
         } catch(ParseException e){
             log.info("Parse failed !!!");
         }

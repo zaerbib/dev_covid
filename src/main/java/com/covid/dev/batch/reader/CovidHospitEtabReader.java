@@ -19,9 +19,9 @@ public class CovidHospitEtabReader {
     @Autowired
     private CovidHospitEtabMapper covidHospitEtabMapper;
 
-    private FlatFileItemReader<CovidHospitEtabDto> reader(){
+    public FlatFileItemReader<CovidHospitEtabDto> reader(){
         FlatFileItemReader<CovidHospitEtabDto> reader = new FlatFileItemReader<>();
-        reader.setResource(new FileSystemResource(systemUtils.getEntrepo8()));
+        reader.setResource(new FileSystemResource(systemUtils.getEntrepo9()));
         reader.setLinesToSkip(1);
         reader.setLineMapper(lineMapper());
         return reader;
