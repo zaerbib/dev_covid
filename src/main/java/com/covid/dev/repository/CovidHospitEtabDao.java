@@ -1,4 +1,4 @@
-package com.covid.dev.dao;
+package com.covid.dev.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
