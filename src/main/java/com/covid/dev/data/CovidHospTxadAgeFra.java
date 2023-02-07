@@ -7,9 +7,12 @@ import java.util.Date;
 import javax.persistence.*;
 
 import lombok.Data;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Table(name = "covid_hosp_txad_age_fra")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 @Data
 public class CovidHospTxadAgeFra {
 	

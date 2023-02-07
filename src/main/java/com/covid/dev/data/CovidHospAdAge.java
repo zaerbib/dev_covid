@@ -3,11 +3,14 @@ package com.covid.dev.data;
 import javax.persistence.*;
 
 import lombok.Data;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "covid_hosp_ad_age")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 @Data
 public class CovidHospAdAge {
 	
