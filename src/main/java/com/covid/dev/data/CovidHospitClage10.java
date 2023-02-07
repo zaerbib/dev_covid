@@ -1,5 +1,6 @@
 package com.covid.dev.data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -18,7 +19,7 @@ public class CovidHospitClage10 {
 	private Integer reg;
 	@Column(name = "cl_age90")
 	private Integer clage90;
-	private Date jour;
+	private LocalDate jour;
 	private Integer hosp;
 	private Integer rea;
 	@Column(name = "HospConv")

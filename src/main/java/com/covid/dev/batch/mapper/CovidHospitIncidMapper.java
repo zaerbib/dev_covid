@@ -9,6 +9,7 @@ import org.springframework.validation.BindException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 @Component
 @Slf4j
@@ -17,11 +18,8 @@ public class CovidHospitIncidMapper implements FieldSetMapper<CovidHospitIncidDt
     public CovidHospitIncidDto mapFieldSet(FieldSet fieldSet) throws BindException {
         CovidHospitIncidDto covidHospitIncidDto = new CovidHospitIncidDto();
         covidHospitIncidDto.setDep(parseStringToInteger(fieldSet.readString("dep")));
-        try {
-            covidHospitIncidDto.setJour(new SimpleDateFormat("yyyy-MM-dd").parse(fieldSet.readString("jour")));
-        } catch (ParseException e) {
-            log.info("Parse failed !!!");
-        }
+        //covidHospitIncidDto.setJour(new SimpleDateFormat("yyyy-MM-dd").parse(fieldSet.readString("jour")));
+        covidHospitIncidDto.setJour(LocalDate.parse(fieldSet.readString("jour")));
         covidHospitIncidDto.setIncidHosp(parseStringToInteger(fieldSet.readString("incid_hosp")));
         covidHospitIncidDto.setIncidRea(parseStringToInteger(fieldSet.readString("incid_rea")));
         covidHospitIncidDto.setIncidDc(parseStringToInteger(fieldSet.readString("incid_dc")));

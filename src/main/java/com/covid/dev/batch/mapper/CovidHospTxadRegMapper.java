@@ -2,6 +2,7 @@ package com.covid.dev.batch.mapper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 import org.springframework.batch.item.file.mapping.FieldSetMapper;
 import org.springframework.batch.item.file.transform.FieldSet;
@@ -17,14 +18,10 @@ public class CovidHospTxadRegMapper implements FieldSetMapper<CovidHospTxadRegDt
 	public CovidHospTxadRegDto mapFieldSet(FieldSet fieldSet) throws BindException {
 		CovidHospTxadRegDto dataItem = new CovidHospTxadRegDto();
 		dataItem.setReg(fieldSet.readString("reg"));
-		
-		try {
-			dataItem.setJour(new SimpleDateFormat("yyyy-mm-dd").parse(fieldSet.readString("jour")));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+
+		//dataItem.setJour(new SimpleDateFormat("yyyy-mm-dd").parse(fieldSet.readString("jour")));
+		dataItem.setJour(LocalDate.parse(fieldSet.readString("jour")));
+
 		dataItem.setPourAvec(parseStringToInteger(fieldSet.readString("PourAvec")));
 		dataItem.setTxIndic7JDc(parseStringToDouble(fieldSet.readString("tx_indic_7J_DC")));
 		dataItem.setTxIndic7JHosp(parseStringToDouble(fieldSet.readString("tx_indic_7J_hosp")));

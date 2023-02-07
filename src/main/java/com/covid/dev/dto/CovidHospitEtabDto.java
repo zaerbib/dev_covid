@@ -1,5 +1,6 @@
 package com.covid.dev.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import lombok.Data;
@@ -7,6 +8,6 @@ import lombok.Data;
 @Data
 public class CovidHospitEtabDto {
 	private Integer dep;
-	private Date jour; 
+	private LocalDate jour;
 	private Integer nb;
 }

@@ -1,6 +1,5 @@
 package com.covid.dev.batch.mapper;
 
-import com.covid.dev.dto.CovidHospAdAgeDto;
 import com.covid.dev.dto.CovidHospitClage10Dto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.file.mapping.FieldSetMapper;
@@ -10,6 +9,7 @@ import org.springframework.validation.BindException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 @Component
 @Slf4j
@@ -20,11 +20,7 @@ public class CovidHospitClage10Mapper implements FieldSetMapper<CovidHospitClage
 
         covidHospitClage10Dto.setReg(parseStringToInteger(fieldSet.readString("reg")));
         covidHospitClage10Dto.setClage90(parseStringToInteger(fieldSet.readString("cl_age90")));
-        try{
-            covidHospitClage10Dto.setJour(new SimpleDateFormat("yyyy-MM-dd").parse(fieldSet.readString("jour")));
-        } catch(ParseException e){
-            log.info("Parse failed !!!");
-        }
+        covidHospitClage10Dto.setJour(LocalDate.parse(fieldSet.readString("jour")));
         covidHospitClage10Dto.setHosp(parseStringToInteger(fieldSet.readString("hosp")));
         covidHospitClage10Dto.setRea(parseStringToInteger(fieldSet.readString("rea")));
         covidHospitClage10Dto.setHospConv(parseStringToInteger(fieldSet.readString("HospConv")));

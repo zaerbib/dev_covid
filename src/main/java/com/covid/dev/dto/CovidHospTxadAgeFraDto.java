@@ -1,5 +1,6 @@
 package com.covid.dev.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import lombok.Data;
@@ -7,7 +8,7 @@ import lombok.Data;
 @Data
 public class CovidHospTxadAgeFraDto {
 	private String fra;	
-	private Date jour;
+	private LocalDate jour;
 	private Integer clage90;
 	private Integer pourAvec;
 	private Double txIndic7JDc;

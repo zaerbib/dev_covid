@@ -2,6 +2,7 @@ package com.covid.dev.batch.mapper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.springframework.batch.item.file.mapping.FieldSetMapper;
@@ -20,7 +21,7 @@ public class CovidHospTxadFraMapper implements FieldSetMapper<CovidHospTxadFraDt
 		dataItem.setFra(fieldSet.readString("fra"));
 		dataItem.setStrate2(parseStringToInteger(fieldSet.readString("strate2")));
 
-		dataItem.setJour(parseStringtoDate(fieldSet.readString("jour")));	
+		dataItem.setJour(LocalDate.parse(fieldSet.readString("jour")));
 
 		dataItem.setPourAvec(parseStringToInteger(fieldSet.readString("PourAvec")));
 		dataItem.setTxIndic7JDc(parseStringToDouble(fieldSet.readString("tx_indic_7J_DC")));

@@ -1,5 +1,6 @@
 package com.covid.dev.data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -16,7 +17,7 @@ public class CovidHospitEtab {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "etab_generator")
 	private Long id;
 	private Integer dep;
-	private Date jour; 
+	private LocalDate jour;
 	private Integer nb;
 
 	@Column(insertable = true, name = "updateTime")

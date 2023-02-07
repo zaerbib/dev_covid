@@ -1,5 +1,6 @@
 package com.covid.dev.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import lombok.Data;
@@ -8,7 +9,7 @@ import lombok.Data;
 public class CovidHospitDto {
 	private String dep;
 	private Character sex;
-	private Date jour;
+	private LocalDate jour;
 	private Integer hosp;
 	private Integer rea;
 	private Integer hospConv;

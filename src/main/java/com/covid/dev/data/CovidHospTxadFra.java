@@ -1,5 +1,6 @@
 package com.covid.dev.data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -17,7 +18,7 @@ public class CovidHospTxadFra {
 	private Long id;
 	private String fra;
 	private Integer strate2;
-	private Date jour;
+	private LocalDate jour;
 	
 	@Column(name = "PourAvec")
 	private Integer pourAvec;

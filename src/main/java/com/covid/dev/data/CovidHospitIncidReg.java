@@ -1,5 +1,6 @@
 package com.covid.dev.data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -15,7 +16,7 @@ public class CovidHospitIncidReg {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "reg_generator")
 	private Long id;
-	private Date jour;
+	private LocalDate jour;
 	private String nomReg;
 	private Integer numReg;
 	@Column(name = "incid_rea")
