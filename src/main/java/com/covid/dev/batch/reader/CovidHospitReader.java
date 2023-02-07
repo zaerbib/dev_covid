@@ -1,5 +1,6 @@
 package com.covid.dev.batch.reader;
 
+import com.covid.dev.batch.mapper.CovidHospitMapper;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
@@ -16,6 +17,9 @@ public class CovidHospitReader {
 
 	@Autowired
 	private SystemUtils systemUtils;
+
+	@Autowired
+	private CovidHospitMapper covidHospitMapper;
 	
 	/**
 	 * read line from file 
@@ -32,6 +36,7 @@ public class CovidHospitReader {
 	
 	private DelimitedLineTokenizer delimit1() {
 		DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
+		tokenizer.setDelimiter(";");
 		tokenizer.setNames(new String[] {"dep", "sexe", "jour", "hosp", "rea", "HospConv", "SSR_USLD", "autres", "rad", "dc"});
 		return tokenizer;
 	}
@@ -45,7 +50,7 @@ public class CovidHospitReader {
 	private DefaultLineMapper<CovidHospitDto> lineMapper(){
 		DefaultLineMapper<CovidHospitDto> mapper = new DefaultLineMapper<>();
 		mapper.setLineTokenizer(delimit1());
-		mapper.setFieldSetMapper(fieldMapper1());
+		mapper.setFieldSetMapper(covidHospitMapper);
 		return mapper;
 	}
 

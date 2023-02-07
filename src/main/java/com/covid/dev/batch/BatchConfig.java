@@ -1,5 +1,11 @@
 package com.covid.dev.batch;
 
+import com.covid.dev.batch.processor.*;
+import com.covid.dev.batch.reader.*;
+import com.covid.dev.batch.writer.*;
+import com.covid.dev.data.*;
+import com.covid.dev.dto.*;
+import com.covid.dev.util.BatchUtils;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -7,33 +13,6 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.covid.dev.batch.processor.CovidHospAdAgeProcessor;
-import com.covid.dev.batch.processor.CovidHospTxadAgeFraProcessor;
-import com.covid.dev.batch.processor.CovidHospTxadFraProcessor;
-import com.covid.dev.batch.processor.CovidHospTxadRegProcessor;
-import com.covid.dev.batch.processor.CovidHospitIncidRegProcessor;
-import com.covid.dev.batch.reader.CovidHospAdAgeReader;
-import com.covid.dev.batch.reader.CovidHospTxadAgeFraReader;
-import com.covid.dev.batch.reader.CovidHospTxadFraReader;
-import com.covid.dev.batch.reader.CovidHospTxadRegReader;
-import com.covid.dev.batch.reader.CovidHospitIncidRegReader;
-import com.covid.dev.batch.writer.CovidHospAdAgeWriter;
-import com.covid.dev.batch.writer.CovidHospTxadAgeFraWriter;
-import com.covid.dev.batch.writer.CovidHospTxadFraWriter;
-import com.covid.dev.batch.writer.CovidHospTxadRegWriter;
-import com.covid.dev.batch.writer.CovidHospitIncidRegWriter;
-import com.covid.dev.data.CovidHospAdAge;
-import com.covid.dev.data.CovidHospTxadAgeFra;
-import com.covid.dev.data.CovidHospTxadFra;
-import com.covid.dev.data.CovidHospTxadReg;
-import com.covid.dev.data.CovidHospitIncidReg;
-import com.covid.dev.dto.CovidHospAdAgeDto;
-import com.covid.dev.dto.CovidHospTxadAgeFraDto;
-import com.covid.dev.dto.CovidHospTxadFraDto;
-import com.covid.dev.dto.CovidHospTxadRegDto;
-import com.covid.dev.dto.CovidHospitIncidRegDto;
-import com.covid.dev.util.BatchUtils;
 
 @Configuration
 public class BatchConfig {
@@ -88,6 +67,37 @@ public class BatchConfig {
 	
 	@Autowired
 	private CovidHospitIncidRegWriter covidHospitIncidRegWriter;
+
+	@Autowired
+	private CovidHospitReader covidHospitReader;
+
+	@Autowired
+	private CovidHospitProcessor covidHospitProcessor;
+
+	@Autowired
+	private CovidHospitWriter covidHospitWriter;
+
+	@Autowired
+	private CovidHospitClage10Reader covidHospitClage10Reader;
+	@Autowired
+	private CovidHospitClage10Processor covidHospitClage10Processor;
+	@Autowired
+	private CovidHospitClage10Writer covidHospitClage10Writer;
+
+	@Autowired
+	private CovidHospitEtabReader covidHospitEtabReader;
+	@Autowired
+	private CovidHospitEtabProcessor covidHospitEtabProcessor;
+	@Autowired
+	private CovidHospitEtabWriter covidHospitEtabWriter;
+
+	@Autowired
+	private CovidHospitIncidReader covidHospitIncidReader;
+	@Autowired
+	private CovidHospitIncidProcessor covidHospitIncidProcessor;
+	@Autowired
+	private CovidHospitIncidWriter covidHospitIncidWriter;
+
 	
 	@Bean(name = "job1")
 	public Job job1() {
@@ -97,6 +107,8 @@ public class BatchConfig {
 				.next(step3())
 				.next(step4())
 				.next(step5())
+				.next(step6())
+				.next(step7())
 				.build();
 	}
 	
@@ -107,6 +119,7 @@ public class BatchConfig {
 				.reader(covidHospTxadAgeFraReader.reader())
 				.processor(covidHospTxadAgeFraProcessor)
 				.writer(covidHospTxadAgeFraWriter)
+				.allowStartIfComplete(true)
 				.build();
 	}	
 	
@@ -117,6 +130,7 @@ public class BatchConfig {
 				.reader(covidHospTxadRegReader.reader())
 				.processor(covidHospTxadRegProcessor)
 				.writer(covidHospTxadRegWriter)
+				.allowStartIfComplete(true)
 				.build();
 	}
 	
@@ -127,6 +141,7 @@ public class BatchConfig {
 				.reader(covidHospTxadFraReader.reader())
 				.processor(covidHospTxadFraProcessor)
 				.writer(covidHospTxadFraWriter)
+				.allowStartIfComplete(true)
 				.build();
 	}
 	
@@ -137,6 +152,7 @@ public class BatchConfig {
 				.reader(covidHospAdAgeReader.reader())
 				.processor(covidHospAdAgeProcessor)
 				.writer(covidHospAdAgeWriter)
+				.allowStartIfComplete(true)
 				.build();
 	}
 	
@@ -147,6 +163,29 @@ public class BatchConfig {
 				.reader(covidHospitIncidRegReader.reader())
 				.processor(covidHospitIncidRegProcessor)
 				.writer(covidHospitIncidRegWriter)
+				.allowStartIfComplete(true)
+				.build();
+	}
+
+	@Bean
+	public Step step6() {
+		return stepBuilderFactory.get(BatchUtils.step6)
+				.<CovidHospitDto, CovidHospit>chunk(100)
+				.reader(covidHospitReader.reader())
+				.processor(covidHospitProcessor)
+				.writer(covidHospitWriter)
+				.allowStartIfComplete(true)
+				.build();
+	}
+
+	@Bean
+	public Step step7(){
+		return stepBuilderFactory.get(BatchUtils.step7)
+				.<CovidHospitClage10Dto, CovidHospitClage10>chunk(100)
+				.reader(covidHospitClage10Reader.reader())
+				.processor(covidHospitClage10Processor)
+				.writer(covidHospitClage10Writer)
+				.allowStartIfComplete(true)
 				.build();
 	}
 }

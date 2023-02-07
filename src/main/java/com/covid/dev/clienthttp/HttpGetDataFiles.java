@@ -4,6 +4,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
@@ -14,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class HttpGetDataFiles {
 	
 	@Autowired
@@ -27,6 +29,7 @@ public class HttpGetDataFiles {
 			
 			ResponseEntity<byte[]> response = restTemplate.build().exchange(source, HttpMethod.GET, entity, byte[].class);
 			Files.write(Paths.get(entrepo), response.getBody());
+			log.info("Download {} from data.gouv to {} !", source, entrepo);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

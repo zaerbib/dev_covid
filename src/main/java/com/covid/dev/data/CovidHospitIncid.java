@@ -15,7 +15,7 @@ public class CovidHospitIncid {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "incid_generator")
 	private Long id;
-	private String dep;
+	private Integer dep;
 	private Date jour;
 	
 	@Column(name = "incid_hosp")

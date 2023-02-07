@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class CovidHospitIncidDto {
-	private String dep;
+	private Integer dep;
 	private Date jour;
 	private Integer incidHosp;
 	private Integer incidRea;

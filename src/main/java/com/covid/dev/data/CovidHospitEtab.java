@@ -15,6 +15,7 @@ public class CovidHospitEtab {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "etab_generator")
 	private Long id;
+	private Integer dep;
 	private Date jour; 
 	private Integer nb;
 
