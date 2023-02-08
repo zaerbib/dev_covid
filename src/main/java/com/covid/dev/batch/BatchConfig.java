@@ -118,7 +118,7 @@ public class BatchConfig {
 	@Bean
 	public Step step1() {
 		return stepBuilderFactory.get(BatchUtils.step1)
-				.<CovidHospTxadAgeFraDto, CovidHospTxadAgeFra> chunk(100)
+				.<CovidHospTxadAgeFraDto, CovidHospTxadAgeFra> chunk(500)
 				.reader(covidHospTxadAgeFraReader.reader())
 				.processor(covidHospTxadAgeFraProcessor)
 				.writer(covidHospTxadAgeFraWriter)
@@ -129,7 +129,7 @@ public class BatchConfig {
 	@Bean
 	public Step step2() {
 		return stepBuilderFactory.get(BatchUtils.step2)
-				.<CovidHospTxadRegDto, CovidHospTxadReg> chunk(100)
+				.<CovidHospTxadRegDto, CovidHospTxadReg> chunk(500)
 				.reader(covidHospTxadRegReader.reader())
 				.processor(covidHospTxadRegProcessor)
 				.writer(covidHospTxadRegWriter)
@@ -140,7 +140,7 @@ public class BatchConfig {
 	@Bean
 	public Step step3() {
 		return stepBuilderFactory.get(BatchUtils.step3)
-				.<CovidHospTxadFraDto, CovidHospTxadFra> chunk(100)
+				.<CovidHospTxadFraDto, CovidHospTxadFra> chunk(500)
 				.reader(covidHospTxadFraReader.reader())
 				.processor(covidHospTxadFraProcessor)
 				.writer(covidHospTxadFraWriter)
@@ -151,7 +151,7 @@ public class BatchConfig {
 	@Bean
 	public Step step4() {
 		return stepBuilderFactory.get(BatchUtils.step4)
-				.<CovidHospAdAgeDto, CovidHospAdAge> chunk(100)
+				.<CovidHospAdAgeDto, CovidHospAdAge> chunk(500)
 				.reader(covidHospAdAgeReader.reader())
 				.processor(covidHospAdAgeProcessor)
 				.writer(covidHospAdAgeWriter)
@@ -162,7 +162,7 @@ public class BatchConfig {
 	@Bean
 	public Step step5() {
 		return stepBuilderFactory.get(BatchUtils.step5)
-				.<CovidHospitIncidRegDto, CovidHospitIncidReg>chunk(100)
+				.<CovidHospitIncidRegDto, CovidHospitIncidReg>chunk(500)
 				.reader(covidHospitIncidRegReader.reader())
 				.processor(covidHospitIncidRegProcessor)
 				.writer(covidHospitIncidRegWriter)
@@ -173,7 +173,7 @@ public class BatchConfig {
 	@Bean
 	public Step step6() {
 		return stepBuilderFactory.get(BatchUtils.step6)
-				.<CovidHospitDto, CovidHospit>chunk(100)
+				.<CovidHospitDto, CovidHospit>chunk(500)
 				.reader(covidHospitReader.reader())
 				.processor(covidHospitProcessor)
 				.writer(covidHospitWriter)
@@ -184,7 +184,7 @@ public class BatchConfig {
 	@Bean
 	public Step step7(){
 		return stepBuilderFactory.get(BatchUtils.step7)
-				.<CovidHospitClage10Dto, CovidHospitClage10>chunk(100)
+				.<CovidHospitClage10Dto, CovidHospitClage10>chunk(500)
 				.reader(covidHospitClage10Reader.reader())
 				.processor(covidHospitClage10Processor)
 				.writer(covidHospitClage10Writer)
@@ -195,7 +195,7 @@ public class BatchConfig {
 	@Bean
 	public Step step8(){
 		return stepBuilderFactory.get(BatchUtils.step8)
-				.<CovidHospitEtabDto, CovidHospitEtab>chunk(100)
+				.<CovidHospitEtabDto, CovidHospitEtab>chunk(500)
 				.reader(covidHospitEtabReader.reader())
 				.processor(covidHospitEtabProcessor)
 				.writer(covidHospitEtabWriter)
