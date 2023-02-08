@@ -6,18 +6,20 @@ import org.springframework.stereotype.Repository;
 
 import com.covid.dev.data.CovidHospit;
 
+import java.util.List;
+
 @Repository
 public interface CovidHospitRepository extends JpaRepository<CovidHospit, Long> {
     @Query(value = "select * from covid_hospit che where date_part('Year', che.jour) :=annee", nativeQuery = true)
-    public CovidHospit findCovidHospitByAnne(String annee);
+    public List<CovidHospit> findCovidHospitByAnne(String annee);
 
     @Query(value = "select * froom covid_hospit " +
             "che where date_part('Year', che.jour):=annee and date_part('month', che.jour) :=mois", nativeQuery = true)
-    public CovidHospit findCovidHospitByAnneAndMois(String annee, String mois);
+    public List<CovidHospit> findCovidHospitByAnneAndMois(String annee, String mois);
 
     @Query(value = "select * from covid_hospit che " +
             "where date_part('Year', che.jour) :=annee  and date_part('month', che.jour) :=mois " +
             "and che.dep :=dep", nativeQuery = true)
-    public CovidHospit findCovidHospitByAnneeAndMoisAndDep(String annee, String mois, String dep);
+    public List<CovidHospit> findCovidHospitByAnneeAndMoisAndDep(String annee, String mois, String dep);
 
 }
