@@ -4,15 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-/**
- * Les données rélatives aux hospitalisations uniquement
- */
 @Data
 @AllArgsConstructor
 @Builder
-public class ItemHospitDto {
-    private Integer nombreHospit;
-    private Integer mois;
+public class ItemTotalMoisDto {
     private Integer annee;
-    private String dep;
+    private Integer mois;
+    private Integer total;
 }
