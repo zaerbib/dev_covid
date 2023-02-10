@@ -1,5 +1,6 @@
 package com.covid.dev.controller;
 
+import com.covid.dev.dto.covidhospit.ItemMoyenneMoisDto;
 import com.covid.dev.dto.covidhospit.ItemTotalMoisDto;
 import com.covid.dev.service.CovidHospitService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,5 +45,10 @@ public class CovidHospitController {
     @GetMapping("total/mois/unan")
     public Flux<ItemTotalMoisDto> listTotalMoisSurUnan(@RequestParam("annee") Integer annee){
         return covidHospitService.listTotalMoisSurUnAn(annee);
+    }
+
+    @GetMapping("moyenne/mois/unan")
+    public Flux<ItemMoyenneMoisDto> listMoyenneSurUnAn(@RequestParam("annee") Integer annee) {
+        return covidHospitService.listMoyenneMoisSurUnAn(annee);
     }
 }
